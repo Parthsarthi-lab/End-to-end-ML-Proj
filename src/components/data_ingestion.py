@@ -1,9 +1,12 @@
 import os
-import sys
+import sys 
 sys.path.append('D:/End-to-end-ML-Proj')
 print(sys.path)
 from src.exception import CustomException
 from src.logger import logging
+
+from src.components.data_Transformation import DataTransformation
+from src.components.data_Transformation import DataTransformationConfig
 import pandas as pd
 
 from sklearn.model_selection import train_test_split
@@ -46,4 +49,7 @@ class DataIngestion:
         
 if __name__ == "__main__":
     obj = DataIngestion()
-    obj.inititate_data_ingestion()
+    train_data,test_data = obj.inititate_data_ingestion()
+
+    data_transformation = DataTransformation()
+    data_transformation.inititate_data_transformation(train_data,test_data)
